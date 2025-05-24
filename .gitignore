@@ -1,0 +1,4 @@
+compile_commands.json
+build_linux/
+build_windows/
+.cache/
