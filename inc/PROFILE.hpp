@@ -1,3 +1,31 @@
+#pragma once
+#include <chrono>
 #include <config.hpp>
+#include <iostream>
+#include <thread>
+#define PROFILER_TRACY 1
 
-#define F_PROFILE
+#if PROFILER_TRACY
+  #include <Tracy.hpp>
+inline void wait_for_tracy()
+{
+  std::cout << "WAITING FOR TRACY " << std::endl;
+  while ( !TracyIsConnected )
+  {
+
+    std::this_thread::sleep_for( std::chrono::milliseconds( 10 ) );
+  }
+}
+  // tracy config
+  #define TRACY_ONLY_LOCALHOST 1
+
+  // tracy macros overload
+  #define Profiler_conection_waiting wait_for_tracy();
+  #define FUNC_PROF( NAME ) ZoneScopedN(NAME)
+// #define message
+#else
+
+  #define Profiler_conection_waiting
+  #define FUNC_PROF( NAME )
+
+#endif

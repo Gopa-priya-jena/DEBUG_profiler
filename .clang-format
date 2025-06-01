@@ -21,7 +21,7 @@ AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: true
 AlwaysBreakTemplateDeclarations: Yes
-AttributeMacros: 
+AttributeMacros:
   - __capability
 BasedOnStyle: LLVM
 BitFieldColonSpacing: After
@@ -30,12 +30,13 @@ BreakInheritanceList: BeforeColon
 BreakBeforeConceptDeclarations: true
 BreakBeforeTernaryOperators: true
 ColumnLimit: 80
-CommentPragmas: '^ IWYU pragma:'
+CommentPragmas: "^ IWYU pragma:"
 CompactNamespaces: false
 Cpp11BracedListStyle: true
-IndentPPDirectives: AfterHash
+IndentPPDirectives: BeforeHash
 IndentRequires: true
 IndentWidth: 2
+IndentRequiresClause: true
 KeepEmptyLinesAtTheStartOfBlocks: true
 Language: Cpp
 LineEnding: LF
@@ -47,10 +48,10 @@ SpacesInSquareBrackets: true
 Standard: c++20
 UseCRLF: false
 UseTab: Never
-WhitespaceSensitiveMacros: 
+SkipMacroDefinitionBody: true
+WhitespaceSensitiveMacros:
   - STRINGIZE
   - PP_STRINGIZE
   - BOOST_PP_STRINGIZE
   - NS_SWIFT_NAME
   - CF_SWIFT_NAME
-...

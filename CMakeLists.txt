@@ -4,11 +4,10 @@ project(
     VERSION 1
     DESCRIPTION
         "It is printf style debug+profile for fast devlopment session without opening debugger multiple times"
-    LANGUAGES CXX
+        LANGUAGES CXX C
 )
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 23)
-# set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
 function(file_list NAME)
     message("\n THE LIST OF ${NAME} FILES ARE \n")
@@ -33,6 +32,10 @@ file(
     ${CMAKE_CURRENT_SOURCE_DIR}/inc/*.hpp
 )
 
+add_subdirectory(External/TRACY)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/External/TRACY/public/tracy/)
+list(APPEND Source_files ${CMAKE_CURRENT_SOURCE_DIR}/External/TRACY/public/TracyClient.cpp)
+
 file_list("DEBUG_Profiler_src files"   ${Source_files})
 file_list("DEBUG_Profiler_hdr files"   ${Header_files})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc)
@@ -40,11 +43,17 @@ add_library(DEBUG_Profiler STATIC ${Source_files} ${Header_files})
 target_include_directories(
     DEBUG_Profiler
     INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/inc/
+    ${CMAKE_CURRENT_SOURCE_DIR}/External/TRACY/public/tracy/
 )
+target_link_libraries( DEBUG_Profiler  PUBLIC Tracy::TracyClient)
+
+
 if(UNIX)
     target_link_libraries(DEBUG_Profiler PUBLIC stdc++exp)
+    set(CMAKE_CXX_FLAGS "-std=c++23")
 endif()
 #remove this its a testing part
+
 add_executable(DEBUG_Profiler_test ${CMAKE_CURRENT_SOURCE_DIR}/test/main.cpp)
 target_link_libraries(DEBUG_Profiler_test PUBLIC DEBUG_Profiler)
 target_include_directories(
