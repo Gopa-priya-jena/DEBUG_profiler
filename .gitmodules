@@ -1,0 +1,3 @@
+[submodule "External/TRACY"]
+	path = External/TRACY
+	url = https://github.com/wolfpld/tracy.git
