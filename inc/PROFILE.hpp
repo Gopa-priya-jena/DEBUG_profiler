@@ -5,7 +5,7 @@
 #include <thread>
 #define PROFILER_TRACY 1
 
-#if PROFILER_TRACY
+#if ( PROFILER_TRACY ) && ( TRACY_ENABLE )
   #include <Tracy.hpp>
 inline void wait_for_tracy()
 {
@@ -16,12 +16,11 @@ inline void wait_for_tracy()
     std::this_thread::sleep_for( std::chrono::milliseconds( 10 ) );
   }
 }
-  // tracy config
-  #define TRACY_ONLY_LOCALHOST 1
 
   // tracy macros overload
   #define Profiler_conection_waiting wait_for_tracy();
   #define FUNC_PROF( NAME ) ZoneScopedN(NAME)
+// #define
 // #define message
 #else
 

@@ -1,5 +1,5 @@
+
 #include <DEBUG.hpp>
-#include <Debug_internal.hpp>
 #include <vector>
 
 void test_func( int adad, std::string hfbdif,
@@ -9,6 +9,8 @@ void test_func( int adad, std::string hfbdif,
   MEM_info( hfbdif );
   MEM_VIEW( hfbdif, 32 );
   STACK_DUMP;
+  R_assert( "pass", 1 );
+  R_assert( "fail", 0 );
 }
 
 int main()
