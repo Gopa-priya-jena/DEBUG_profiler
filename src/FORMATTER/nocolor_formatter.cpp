@@ -97,19 +97,19 @@ namespace DEBUG_profiler
       const std::vector<std::string_view> &Args_name,
       const std::vector<std::string>      &Arg_data )
   {
-    return std::format( "{}{}{}{}", level_fmt( log_level::TRACE ),
+    return std::format( "\n{}{}{}{}{}{}", div, level_fmt( log_level::TRACE ),
                         Time_format( e_time ), current_time_fmt( time ),
                         Location_format( loc ),
-                        F_arg_format( Args_name, Arg_data ) );
+                        F_arg_format( Args_name, Arg_data ), div );
   }
   std::string NOColor_format::trace_fmt(
       const Source_Loc loc, const TIME e_time,
       const std::chrono::zoned_time<std::chrono::system_clock::duration> time )
   {
 
-    return std::format( "{} {} {} {}", level_fmt( log_level::TRACE ),
+    return std::format( "\n{}{} {} {} {}{}", div, level_fmt( log_level::TRACE ),
                         Time_format( e_time ), current_time_fmt( time ),
-                        Location_format( loc ) );
+                        Location_format( loc ), div );
   }
   std::string NOColor_format::stack_trace_fmt(
       const std::stacktrace &str, const TIME e_time,
