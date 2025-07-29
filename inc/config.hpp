@@ -5,7 +5,7 @@
 #define DEBUG_PROFILE_ENABLE    1
 
 // LOGGING ACTIONS
-#define LOGGER_ENABLE           1
+#define LOGGER_ENABLE           0
 #define LOG_ENABLE              1
 #define LOG_LEVEL_TRACE_ENABLE  1
 #define LOG_LEVEL_NORMAL_ENABLE 1

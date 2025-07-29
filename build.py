@@ -39,6 +39,7 @@ if system_name == "windows":
     generator = "-G Ninja "
 source = "  .. "
 build_cmd = "cmake " + source + generator + " -DCMAKE_BUILD_TYPE=DEBUG " + tracy_config
+compile_cmd = "cmake --build . -j256"  # --clean-first "
 
 
 def build_dir():
@@ -71,7 +72,7 @@ def build():
         # os.system(" mv compile_commands.json ..")
         move("compile_commands.json", "..")
         print("\n========================= RUNNING MAKE ===================== \n")
-        if os.system("cmake --build . --clean-first -j256") == 0:
+        if os.system(compile_cmd) == 0:
             print("COMPILATION SUCCEED \n")
             print("RUNNING APP  \n")
             if os.path.exists("./DEBUG_Profiler_test"):

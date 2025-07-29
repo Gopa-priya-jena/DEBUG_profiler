@@ -91,22 +91,20 @@ inline void mem_info( std::string_view file, std::uint32_t line,
   #define END_LOG    LOGGER_.~Logger();
 #else
   // tracer
-  #define FUNCTION_PROFILE
-  #define FUNCTION_PROFILE_ARG( ... )
+  #define Trace
+  #define Trace_arg( ... )
   // logging
-  #define LOG_AT( X, ... )
-  #define LOG_NORMAL( ... )
-  #define LOG_INFO( ... )
-  #define LOG_DEBUG( ... )
-  #define LOG_WARN( ... )
-  #define LOG_ERROR( ... )
-  #define LOG_CRITICAL( ... )
+  #define log_( X, ... )
+  #define log_nrml( ... )
+  #define log_info( ... )
+  #define log_dbg( ... )
+  #define log_wrn( ... )
+  #define log_err( ... )
+  #define log_critical( ... )
   // memory related actions and function to
   //  view and analyse memory
-  #define MEM_info( X )
-  #define MEM_VIEW( X, POS )
+  #define mem_inf( X )
+  #define mem_vw( X, POS )
   // breakpoint
-  #define BREAK( X )
-  #define END_LOG
-  #define STACK_DUMP
+  #define st_dump
 #endif

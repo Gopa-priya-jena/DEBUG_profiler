@@ -46,13 +46,27 @@ endif()
 file_list("DEBUG_Profiler_src files"   ${Source_files})
 file_list("DEBUG_Profiler_hdr files"   ${Header_files})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc)
-add_library(DEBUG_Profiler STATIC ${Source_files} ${Header_files})
+add_library(DEBUG_Profiler ${Source_files} ${Header_files})
 target_include_directories(
     DEBUG_Profiler
     INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}/inc/
         ${CMAKE_CURRENT_SOURCE_DIR}/External/TRACY/public/tracy/
 )
+
+add_macro
+
+
+
+
+
+
+
+
+
+
+
+
 
 if(TRACY_ENABLE)
     target_link_libraries(DEBUG_Profiler PUBLIC Tracy::TracyClient)
