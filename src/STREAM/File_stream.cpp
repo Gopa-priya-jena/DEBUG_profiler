@@ -103,7 +103,7 @@ namespace DEBUG_profiler
 
       i.file << std::flush;
       i.file.close();
-      delete ( i.file_buff );
+      delete[] ( i.file_buff );
     }
   }
 

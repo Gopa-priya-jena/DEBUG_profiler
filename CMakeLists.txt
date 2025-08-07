@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.0)
+cmake_minimum_required(VERSION 3.7.0)
 project(
     "DEBUG_Profile"
     VERSION 1
@@ -54,7 +54,7 @@ target_include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/External/TRACY/public/tracy/
 )
 
-add_macro
+
 
 
 
