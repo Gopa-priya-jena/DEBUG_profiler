@@ -54,32 +54,30 @@ target_include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/External/TRACY/public/tracy/
 )
 
-add_macro
-
-
-
-
-
-
-
-
-
-
-
-
-
 if(TRACY_ENABLE)
     target_link_libraries(DEBUG_Profiler PUBLIC Tracy::TracyClient)
 endif()
+
 if(UNIX)
     target_link_libraries(DEBUG_Profiler PUBLIC stdc++exp)
     set(CMAKE_CXX_FLAGS "-std=c++23")
 endif()
 #remove this its a testing part
 
-add_executable(DEBUG_Profiler_test ${CMAKE_CURRENT_SOURCE_DIR}/test/main.cpp)
-target_link_libraries(DEBUG_Profiler_test PUBLIC DEBUG_Profiler)
-target_include_directories(
-    DEBUG_Profiler_test
-    INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/inc/
-)
+if(TEST_build)
+    file(
+        GLOB test_files
+        CONFIGURE_DEPENDS
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp
+    )
+
+    foreach(item ${test_files})
+        get_filename_component(f_name ${item} NAME_WLE)
+        add_executable(f_name ${item})
+        target_link_libraries(f_name PUBLIC DEBUG_Profiler)
+        target_include_directories(
+            f_name
+            INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/inc/
+        )
+    endforeach()
+endif()

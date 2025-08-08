@@ -38,7 +38,14 @@ generator = " "
 if system_name == "windows":
     generator = "-G Ninja "
 source = "  .. "
-build_cmd = "cmake " + source + generator + " -DCMAKE_BUILD_TYPE=DEBUG " + tracy_config
+build_cmd = (
+    "cmake "
+    + "-DTEST_build=ON"
+    + source
+    + generator
+    + " -DCMAKE_BUILD_TYPE=DEBUG "
+    + tracy_config
+)
 compile_cmd = "cmake --build . -j256"  # --clean-first "
 
 

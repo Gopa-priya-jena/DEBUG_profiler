@@ -23,6 +23,8 @@ namespace DEBUG_profiler
   {
 
   private:
+    // std::map<std::thread::id, std::fstream>
+
     std::vector<_file_list> File_list;
     std::filesystem::path   Log_folder;
     NOColor_format          fmt;
