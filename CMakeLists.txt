@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0.0)
+cmake_minimum_required(VERSION 3.7.0)
 project(
     "DEBUG_Profile"
     VERSION 1
