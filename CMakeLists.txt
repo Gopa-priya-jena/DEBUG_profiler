@@ -54,6 +54,23 @@ target_include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/External/TRACY/public/tracy/
 )
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> d7783f3bdfd672a63c705fc08859c5e279f909be
 if(TRACY_ENABLE)
     target_link_libraries(DEBUG_Profiler PUBLIC Tracy::TracyClient)
 endif()

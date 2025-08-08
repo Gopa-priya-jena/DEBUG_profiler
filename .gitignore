@@ -2,6 +2,8 @@
 build_linux/
 build_windows/
 .cache/
+out/
+.vs/
 
 #files
 compile_commands.json
